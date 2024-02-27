@@ -34,13 +34,12 @@ for data in data_loader:
         output_np = output_np.reshape(2, 256, 173)
         output2_np = output_np.reshape(2, 256, 173)
 
-        fig, axs = plt.subplots(6, 1, figsize=(6, 14))
+        fig, axs = plt.subplots(5, 1, figsize=(6, 14))
         plot_spectrogram(melspec_np[0], title="Input/GT_1", ax=axs[0])  
-        plot_spectrogram(0.3*output_np[0]+0.7*melspec_np[0], title="PD_1", ax=axs[1])  
+        plot_spectrogram(output_np[0], title="PD_1", ax=axs[1])  
         plot_spectrogram(x_np[0], title="GT_2", ax=axs[2])  
-        plot_spectrogram(0.4*output2_np[0]+0.6*x_np[0], title="PD_2", ax=axs[3])        
-        plot_pitch(y_np[0,:,:], 44100, y_np[0,:,:], ax=axs[4])
-        plot_pitch(output1_np[0,:,:]+y_np[0,:,:], 44100, output1_np[0,:,:], ax=axs[5])
+        plot_spectrogram(output2_np[0], title="PD_2", ax=axs[3])        
+        plot_pitch(output1_np[0,:,:], 44100, y_np[0,:,:], ax=axs[4])
         plt.tight_layout()
         plt.show()
     break
